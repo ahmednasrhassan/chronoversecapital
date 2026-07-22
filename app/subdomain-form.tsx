@@ -33,7 +33,7 @@ type CreateState = {
 function SubdomainInput({ defaultValue }: { defaultValue?: string }) {
   return (
     <div className="space-y-2">
-      <Label htmlFor="subdomain">Subdomain</Label>
+      <Label htmlFor="subdomain" className="text-foreground">Subdomain</Label>
       <div className="flex items-center">
         <div className="relative flex-1">
           <Input
@@ -41,11 +41,11 @@ function SubdomainInput({ defaultValue }: { defaultValue?: string }) {
             name="subdomain"
             placeholder="your-subdomain"
             defaultValue={defaultValue}
-            className="w-full rounded-r-none focus:z-10"
+            className="w-full rounded-r-none focus:z-10 bg-background text-foreground border-input placeholder:text-muted-foreground"
             required
           />
         </div>
-        <span className="bg-gray-100 px-3 border border-l-0 border-input rounded-r-md text-gray-500 min-h-[36px] flex items-center">
+        <span className="bg-muted px-3 border border-l-0 border-input rounded-r-md text-muted-foreground min-h-[36px] flex items-center">
           .{rootDomain}
         </span>
       </div>
@@ -71,16 +71,16 @@ function IconPicker({
 
   return (
     <div className="space-y-2">
-      <Label htmlFor="icon">Icon</Label>
+      <Label htmlFor="icon" className="text-foreground">Icon</Label>
       <div className="flex flex-col gap-2">
         <input type="hidden" name="icon" value={icon} required />
         <div className="flex items-center gap-2">
-          <Card className="flex-1 flex flex-row items-center justify-between p-2 border border-input rounded-md">
+          <Card className="flex-1 flex flex-row items-center justify-between p-2 border border-input rounded-md bg-background">
             <div className="min-w-[40px] min-h-[40px] flex items-center pl-[14px] select-none">
               {icon ? (
                 <span className="text-3xl">{icon}</span>
               ) : (
-                <span className="text-gray-400 text-sm font-normal">
+                <span className="text-muted-foreground text-sm font-normal">
                   No icon selected
                 </span>
               )}
@@ -91,7 +91,7 @@ function IconPicker({
                   type="button"
                   variant="outline"
                   size="sm"
-                  className="ml-auto rounded-sm"
+                  className="ml-auto rounded-sm border-input hover:bg-secondary hover:text-secondary-foreground"
                   onClick={() => setIsPickerOpen(!isPickerOpen)}
                 >
                   <Smile className="h-4 w-4 mr-2" />
@@ -99,7 +99,7 @@ function IconPicker({
                 </Button>
               </PopoverTrigger>
               <PopoverContent
-                className="p-0 w-[256px]"
+                className="p-0 w-[256px] border-border bg-popover"
                 align="end"
                 sideOffset={5}
               >
@@ -116,7 +116,7 @@ function IconPicker({
             </Popover>
           </Card>
         </div>
-        <p className="text-xs text-gray-500">
+        <p className="text-xs text-muted-foreground">
           Select an emoji to represent your subdomain
         </p>
       </div>
@@ -139,12 +139,17 @@ export function SubdomainForm() {
       <IconPicker icon={icon} setIcon={setIcon} defaultValue={state?.icon} />
 
       {state?.error && (
-        <div className="text-sm text-red-500">{state.error}</div>
+        <div className="text-sm font-medium text-destructive">{state.error}</div>
       )}
 
-      <Button type="submit" className="w-full" disabled={isPending || !icon}>
+      <Button 
+        type="submit" 
+        className="w-full bg-primary text-primary-foreground hover:bg-primary/90 transition-colors" 
+        disabled={isPending || !icon}
+      >
         {isPending ? 'Creating...' : 'Create Subdomain'}
       </Button>
     </form>
   );
 }
+
