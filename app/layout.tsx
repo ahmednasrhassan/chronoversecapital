@@ -9,8 +9,8 @@ const geistSans = Geist({
 });
 
 export const metadata: Metadata = {
-  title: 'Platforms Starter Kit',
-  description: 'Next.js template for building a multi-tenant SaaS.'
+  title: 'ChronoVerse Capital',
+  description: 'Institutional Macroeconomic Research & Investment Portal'
 };
 
 export default function RootLayout({
@@ -19,8 +19,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={`${geistSans.variable} antialiased`}>
+    <html lang="en" className="dark">
+      <body className={`${geistSans.variable} antialiased bg-background text-foreground`}>
         {children}
         <SpeedInsights />
       </body>
