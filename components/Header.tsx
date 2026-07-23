@@ -50,7 +50,12 @@ export default function Header() {
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-8 py-3.5 flex items-center justify-between">
-        <Link href="/" className="flex items-center gap-2 group">
+        <Link href="/" className="flex items-center gap-3 group">
+          <img 
+            src="/logo.png" 
+            alt="ChronoVerse Capital Logo" 
+            className="h-9 w-9 rounded-full object-cover border border-amber-500/30 shadow-md transition-transform group-hover:scale-105" 
+          />
           <span className="text-lg font-bold tracking-tight text-zinc-100 group-hover:text-amber-400 transition-colors uppercase font-serif">
             ChronoVerse <span className="text-amber-500 font-sans font-light text-sm tracking-widest">CAPITAL</span>
           </span>
@@ -99,4 +104,3 @@ export default function Header() {
     </header>
   );
 }
-
