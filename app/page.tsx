@@ -166,7 +166,7 @@ export default function HomePage() {
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
           
-          {/* Live Chart 1: US 10Y Treasury Bond (Guaranteed Ticker) */}
+          {/* Live Chart 1: US 10Y Treasury Bond (Guaranteed NASDAQ Ticker) */}
           <div className="bg-[#121216] border border-white/5 rounded-xl p-6 relative flex flex-col justify-between space-y-4">
             <div>
               <div className="flex justify-between items-center mb-4 flex-wrap gap-2">
@@ -176,7 +176,7 @@ export default function HomePage() {
               
               <div className="w-full h-[240px] rounded border border-white/5 mb-4 relative overflow-hidden bg-[#0A0A0C]">
                 <iframe
-                  src="https://s.tradingview.com/widgetembed/?symbol=AMEX:IEF&interval=D&theme=dark&style=1&hidesidetoolbar=1&hide_top_toolbar=1"
+                  src="https://s.tradingview.com/widgetembed/?symbol=NASDAQ:IEF&interval=D&theme=dark&style=1&hidesidetoolbar=1&hide_top_toolbar=1"
                   width="100%"
                   height="100%"
                   className="border-0"
