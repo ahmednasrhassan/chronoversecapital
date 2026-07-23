@@ -1,13 +1,4 @@
 import { NextResponse } from 'next/server';
-import { SESClient, SendEmailCommand } from '@aws-sdk/client-ses';
-
-const sesClient = new SESClient({
-  region: process.env.AWS_REGION || 'us-east-1',
-  credentials: {
-    accessKeyId: process.env.AWS_ACCESS_KEY_ID || '',
-    secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY || '',
-  },
-});
 
 export async function POST(request: Request) {
   try {
@@ -17,31 +8,28 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: 'Invalid email address' }, { status: 400 });
     }
 
-    // 1. Send Notification to Admin & Confirmation to Subscriber via Amazon SES
-    const sendParams = {
-      Source: process.env.SES_VERIFIED_EMAIL || 'research@chronoversecapital.com',
-      Destination: {
-        ToAddresses: [email],
-      },
-      Message: {
-        Subject: {
-          Data: 'ChronoVerse Capital - Intelligence Access Granted',
-        },
-        Body: {
-          Text: {
-            Data: `Welcome to ChronoVerse Capital Institutional Intelligence.\n\nYour email (${email}) has been authorized for institutional research dispatches.\n\nTo access Terminal telemetry, visit https://intel.chronoversecapital.com`,
-          },
-        },
-      },
-    };
+    // Amazon SES Webhook Endpoint or Direct Mailer Fetch Integration
+    const sesEndpoint = process.env.SES_WEBHOOK_URL;
 
-    const command = new SendEmailCommand(sendParams);
-    await sesClient.send(command);
+    if (sesEndpoint) {
+      await fetch(sesEndpoint, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          to: email,
+          from: process.env.SES_VERIFIED_EMAIL || 'research@chronoversecapital.com',
+          subject: 'ChronoVerse Capital - Intelligence Access Granted',
+          message: `Welcome to ChronoVerse Capital Institutional Intelligence.\n\nYour email (${email}) has been authorized for institutional research dispatches.\n\nTo access Terminal telemetry, visit https://intel.chronoversecapital.com`,
+        }),
+      });
+    }
 
-    return NextResponse.json({ success: true, message: 'Subscription processed successfully' });
+    return NextResponse.json({
+      success: true,
+      message: 'Subscription request registered successfully',
+    });
   } catch (error: any) {
-    console.error('Amazon SES Error:', error);
-    return NextResponse.json({ error: 'Failed to process subscription' }, { status: 500 });
+    console.error('Subscription API Error:', error);
+    return NextResponse.json({ error: 'Internal server error' }, { status: 500 });
   }
 }
-
