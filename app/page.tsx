@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
+import { TradingViewChart } from '@/components/TradingViewChart';
 
 export default function HomePage() {
   return (
@@ -10,7 +11,7 @@ export default function HomePage() {
       {/* 1. HERO SECTION */}
       <section className="w-full px-4 sm:px-8 py-16 sm:py-20 border-b border-white/5 relative overflow-hidden">
         
-        {/* Priority Hero Background Image - Loads Immediately */}
+        {/* Priority Hero Background Image */}
         <div className="absolute inset-0 pointer-events-none flex justify-center opacity-[0.03]">
           <Image
             src="/hero-bg.png"
@@ -166,7 +167,7 @@ export default function HomePage() {
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
           
-          {/* Chart Preview 1 */}
+          {/* Live Chart 1: US 10Y Yield */}
           <div className="bg-[#121216] border border-white/5 rounded-xl p-6 relative flex flex-col justify-between space-y-4">
             <div>
               <div className="flex justify-between items-center mb-4 flex-wrap gap-2">
@@ -174,20 +175,9 @@ export default function HomePage() {
                 <span className="text-[10px] sm:text-xs font-mono text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded">BULLISH DIVERGENCE</span>
               </div>
               
-              <div className="w-full h-40 bg-[#0A0A0C] rounded border border-white/5 flex items-center justify-center mb-4 relative overflow-hidden group">
-                {/* Lazy Loaded Chart Image */}
-                <Image
-                  src="/chart-1.png"
-                  alt="US 10Y Real Yield Chart"
-                  fill
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                  loading="lazy"
-                  className="object-cover opacity-40 group-hover:opacity-70 transition-opacity duration-500"
-                />
-                <div className="absolute inset-0 opacity-20 bg-[radial-gradient(#C58A38_1px,transparent_1px)] [background-size:16px_16px] pointer-events-none"></div>
-                <div className="text-xs font-mono text-zinc-400 relative z-10 bg-[#0A0A0C]/80 px-3 py-1.5 rounded border border-white/10 backdrop-blur-sm">
-                  Live API Chart Telemetry...
-                </div>
+              {/* Dynamic TradingView API Injection */}
+              <div className="w-full rounded border border-white/5 mb-4 relative overflow-hidden bg-[#0A0A0C]">
+                <TradingViewChart symbol="TVC:US10Y" height={240} />
               </div>
             </div>
 
@@ -196,28 +186,17 @@ export default function HomePage() {
             </div>
           </div>
 
-          {/* Chart Preview 2 */}
+          {/* Live Chart 2: Gold */}
           <div className="bg-[#121216] border border-white/5 rounded-xl p-6 relative flex flex-col justify-between space-y-4">
             <div>
               <div className="flex justify-between items-center mb-4 flex-wrap gap-2">
-                <span className="text-xs font-mono text-zinc-300">Global Central Bank Balance Sheet Net Flow</span>
+                <span className="text-xs font-mono text-zinc-300">Global Institutional Hard Asset Flow</span>
                 <span className="text-[10px] sm:text-xs font-mono text-[#C58A38] bg-[#C58A38]/10 px-2 py-0.5 rounded">ACCUMULATION PHASE</span>
               </div>
               
-              <div className="w-full h-40 bg-[#0A0A0C] rounded border border-white/5 flex items-center justify-center mb-4 relative overflow-hidden group">
-                {/* Lazy Loaded Chart Image */}
-                <Image
-                  src="/chart-2.png"
-                  alt="Central Bank Net Flow Chart"
-                  fill
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                  loading="lazy"
-                  className="object-cover opacity-40 group-hover:opacity-70 transition-opacity duration-500"
-                />
-                <div className="absolute inset-0 opacity-20 bg-[radial-gradient(#C58A38_1px,transparent_1px)] [background-size:16px_16px] pointer-events-none"></div>
-                <div className="text-xs font-mono text-zinc-400 relative z-10 bg-[#0A0A0C]/80 px-3 py-1.5 rounded border border-white/10 backdrop-blur-sm">
-                  Live API Chart Telemetry...
-                </div>
+              {/* Dynamic TradingView API Injection */}
+              <div className="w-full rounded border border-white/5 mb-4 relative overflow-hidden bg-[#0A0A0C]">
+                <TradingViewChart symbol="TVC:GOLD" height={240} />
               </div>
             </div>
 
