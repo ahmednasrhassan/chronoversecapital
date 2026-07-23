@@ -1,6 +1,3 @@
-import fs from 'fs';
-import path from 'path';
-import matter from 'gray-matter';
 import Link from 'next/link';
 
 interface CategoryPageProps {
@@ -9,26 +6,70 @@ interface CategoryPageProps {
   };
 }
 
-export default async function DynamicCategoryPage({ params }: CategoryPageProps) {
+// Static MDX Metadata Registry
+const mdxRegistry: Record<string, Array<{
+  slug: string;
+  title: string;
+  excerpt: string;
+  category: string;
+  readTime: string;
+  date: string;
+  signal: string;
+  statusColor: string;
+}>> = {
+  'intel-dossiers': [
+    {
+      slug: 'sovereign-debt-super-cycle',
+      title: 'The Sovereign Debt Super-Cycle: Global Liquidity Shifts & Systemic Collapse Vectors',
+      excerpt: 'An exhaustive structural dissection of central bank balance sheets, collateral scarcity dynamics, and the impending monetary pivot affecting cross-asset allocations.',
+      category: 'INTEL-DOSSIER #042',
+      readTime: '12 MIN READ',
+      date: '2026-07-20',
+      signal: 'High Volatility / Structural Bullion Shift',
+      statusColor: 'bg-emerald-500'
+    }
+  ],
+  'market-signals': [
+    {
+      slug: 'real-yields-treasury-spreads',
+      title: 'Real Yields & Treasury Spreads: Decoding the Next Bond Market Shock',
+      excerpt: 'Tracking systemic credit stress and reverse repo drainage as liquidity conditions tighten across Tier-1 banking channels.',
+      category: 'MARKET-SIGNAL #019',
+      readTime: '8 MIN READ',
+      date: '2026-07-22',
+      signal: 'Defensive Allocation',
+      statusColor: 'bg-[#C58A38]'
+    }
+  ],
+  'tech-arsenal': [
+    {
+      slug: 'algorithmic-execution-frameworks',
+      title: 'Algorithmic Execution Frameworks for High-Velocity Macro Hedges',
+      excerpt: 'Proprietary codebases and quantitative indicators designed to capture tail-risk events and asymmetric market corrections.',
+      category: 'TECH-ARSENAL #008',
+      readTime: '10 MIN READ',
+      date: '2026-07-21',
+      signal: 'Neutral / Accumulate',
+      statusColor: 'bg-[#C58A38]'
+    }
+  ],
+  'the-vault': [
+    {
+      slug: 'sovereign-reserve-realignment',
+      title: 'Sovereign Reserve Realignment: Central Bank Gold Accumulation & Institutional Vault Vectors',
+      excerpt: 'An insider structural audit of sovereign balance sheet shifts, physical gold settlement protocols, and non-fiat reserve asset allocation.',
+      category: 'THE-VAULT #001',
+      readTime: '18 MIN READ',
+      date: '2026-07-23',
+      signal: 'High-Conviction Reserve Accumulation',
+      statusColor: 'bg-[#C58A38]'
+    }
+  ]
+};
+
+export default function DynamicCategoryPage({ params }: CategoryPageProps) {
   const categorySlug = params.category;
-  const contentDir = path.join(process.cwd(), 'content', categorySlug);
-
-  let posts: any[] = [];
-
-  if (fs.existsSync(contentDir)) {
-    const files = fs.readdirSync(contentDir);
-    posts = files
-      .filter((file) => file.endsWith('.mdx'))
-      .map((file) => {
-        const filePath = path.join(contentDir, file);
-        const fileContent = fs.readFileSync(filePath, 'utf8');
-        const { data } = matter(fileContent);
-        return {
-          slug: file.replace('.mdx', ''),
-          ...data,
-        };
-      });
-  }
+  const posts = mdxRegistry[categorySlug] || [];
 
   const categoryTitles: Record<string, string> = {
     'intel-dossiers': 'Intel-Dossiers Coverage',
@@ -61,7 +102,7 @@ export default async function DynamicCategoryPage({ params }: CategoryPageProps)
         </div>
       </section>
 
-      {/* Dossiers MDX Feed Grid */}
+      {/* Dossiers Grid */}
       <section className="max-w-7xl mx-auto px-4 sm:px-8 py-12">
         {posts.length === 0 ? (
           <div className="bg-[#121216] border border-white/5 rounded-xl p-12 text-center text-zinc-500 font-mono text-sm">
@@ -77,20 +118,12 @@ export default async function DynamicCategoryPage({ params }: CategoryPageProps)
                 <div className="space-y-4">
                   <div className="flex flex-wrap items-center gap-2 sm:gap-3 text-xs font-mono text-zinc-400">
                     <span className="px-2.5 py-1 rounded bg-[#C58A38]/10 text-[#C58A38] border border-[#C58A38]/20 text-[11px]">
-                      {post.category || 'DOSSIER'}
+                      {post.category}
                     </span>
-                    {post.readTime && (
-                      <>
-                        <span>•</span>
-                        <span>{post.readTime}</span>
-                      </>
-                    )}
-                    {post.date && (
-                      <>
-                        <span>•</span>
-                        <span>{post.date}</span>
-                      </>
-                    )}
+                    <span>•</span>
+                    <span>{post.readTime}</span>
+                    <span>•</span>
+                    <span>{post.date}</span>
                   </div>
 
                   <h2 className="text-xl sm:text-2xl font-bold font-serif text-zinc-100 hover:text-[#C58A38] transition-colors leading-snug">
@@ -106,8 +139,8 @@ export default async function DynamicCategoryPage({ params }: CategoryPageProps)
 
                 <div className="pt-4 border-t border-white/5 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                   <div className="flex items-center gap-2 text-xs font-mono text-zinc-300">
-                    <span className={`w-2 h-2 rounded-full ${post.statusColor || 'bg-[#C58A38]'}`}></span>
-                    <span>Outlook: {post.signal || 'Monitored'}</span>
+                    <span className={`w-2 h-2 rounded-full ${post.statusColor}`}></span>
+                    <span>Outlook: {post.signal}</span>
                   </div>
 
                   <Link
@@ -127,4 +160,3 @@ export default async function DynamicCategoryPage({ params }: CategoryPageProps)
     </div>
   );
 }
-
