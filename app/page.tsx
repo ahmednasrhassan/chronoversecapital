@@ -9,13 +9,13 @@ export default function HomePage() {
       {/* 1️⃣ HERO SECTION */}
       <section className="w-full px-4 sm:px-8 py-16 sm:py-20 border-b border-white/5">
         <div className="max-w-4xl mx-auto text-center space-y-6 sm:space-y-8">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#D4AF37]/10 border border-[#D4AF37]/20 text-[#D4AF37] text-[11px] sm:text-xs font-mono tracking-wider uppercase">
-            <span className="w-2 h-2 rounded-full bg-[#D4AF37] animate-pulse"></span>
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#C58A38]/10 border border-[#C58A38]/25 text-[#C58A38] text-[11px] sm:text-xs font-mono tracking-wider uppercase">
+            <span className="w-2 h-2 rounded-full bg-[#C58A38] animate-pulse"></span>
             Institutional Macroeconomic Intelligence
           </div>
 
           <h1 className="text-3xl sm:text-6xl font-extrabold tracking-tight font-serif text-zinc-100 leading-tight">
-            Systemic Risk & Capital Allocation <span className="text-[#D4AF37]">Architecture</span>
+            Systemic Risk & Capital Allocation <span className="text-[#C58A38]">Architecture</span>
           </h1>
 
           <p className="text-sm sm:text-lg text-zinc-400 max-w-2xl mx-auto leading-relaxed">
@@ -27,7 +27,7 @@ export default function HomePage() {
               href="https://intel.chronoversecapital.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-full sm:w-auto px-8 py-3.5 rounded bg-[#D4AF37] hover:bg-[#c49f2e] text-zinc-950 font-bold text-sm tracking-wide transition-all shadow-lg shadow-[#D4AF37]/10 uppercase text-center"
+              className="w-full sm:w-auto px-8 py-3.5 rounded bg-[#C58A38] hover:bg-[#b0782e] text-zinc-950 font-bold text-sm tracking-wide transition-all shadow-lg shadow-[#C58A38]/10 uppercase text-center"
             >
               Access Intelligence Hub
             </a>
@@ -45,22 +45,22 @@ export default function HomePage() {
       {/* 2️⃣ MASTER FEATURED REPORT (Full Width) */}
       <section className="max-w-7xl mx-auto px-4 sm:px-8 py-12 sm:py-16">
         <div className="mb-6 flex items-center justify-between">
-          <h3 className="text-xs font-mono uppercase tracking-widest text-[#D4AF37]">Featured Flagship Dossier</h3>
+          <h3 className="text-xs font-mono uppercase tracking-widest text-[#C58A38]">Featured Flagship Dossier</h3>
           <span className="text-[11px] font-mono text-zinc-500">UPDATED WEEKLY</span>
         </div>
 
-        <div className="bg-[#121216] border border-[#D4AF37]/20 rounded-xl p-5 sm:p-10 relative overflow-hidden group hover:border-[#D4AF37]/40 transition-all">
-          <div className="absolute top-0 right-0 w-64 h-64 bg-[#D4AF37]/5 rounded-full blur-3xl pointer-events-none"></div>
+        <div className="bg-[#121216] border border-[#C58A38]/20 rounded-xl p-5 sm:p-10 relative overflow-hidden group hover:border-[#C58A38]/40 transition-all">
+          <div className="absolute top-0 right-0 w-64 h-64 bg-[#C58A38]/5 rounded-full blur-3xl pointer-events-none"></div>
           
           <div className="flex flex-wrap items-center gap-2 sm:gap-3 text-xs font-mono text-zinc-400 mb-4">
-            <span className="px-2.5 py-1 rounded bg-[#D4AF37]/10 text-[#D4AF37] border border-[#D4AF37]/20 text-[10px] sm:text-xs">INTEL-DOSSIER #042</span>
+            <span className="px-2.5 py-1 rounded bg-[#C58A38]/10 text-[#C58A38] border border-[#C58A38]/20 text-[10px] sm:text-xs">INTEL-DOSSIER #042</span>
             <span>•</span>
             <span>MACRO LIQUIDITY MODEL</span>
             <span>•</span>
             <span>12 MIN READ</span>
           </div>
 
-          <h2 className="text-xl sm:text-4xl font-bold font-serif text-zinc-100 mb-4 group-hover:text-[#D4AF37] transition-colors">
+          <h2 className="text-xl sm:text-4xl font-bold font-serif text-zinc-100 mb-4 group-hover:text-[#C58A38] transition-colors">
             The Sovereign Debt Super-Cycle: Global Liquidity Shifts & Systemic Collapse Vectors
           </h2>
 
@@ -75,7 +75,7 @@ export default function HomePage() {
             </div>
             <Link
               href="/category/intel-dossiers"
-              className="text-xs font-mono uppercase tracking-widest text-[#D4AF37] hover:text-[#f0c850] flex items-center gap-1.5 transition-colors"
+              className="text-xs font-mono uppercase tracking-widest text-[#C58A38] hover:text-[#d89a44] flex items-center gap-1.5 transition-colors"
             >
               <span>Read Full Dossier</span>
               <span>→</span>
@@ -87,21 +87,21 @@ export default function HomePage() {
       {/* 3️⃣ RESEARCH DOSSIERS GRID */}
       <section className="max-w-7xl mx-auto px-4 sm:px-8 pb-12 sm:pb-16">
         <div className="mb-6 flex items-center justify-between">
-          <h3 className="text-xs font-mono uppercase tracking-widest text-[#D4AF37]">Core Research Coverage</h3>
-          <Link href="/category/intel-dossiers" className="text-xs font-mono text-zinc-400 hover:text-[#D4AF37] transition-colors">View All →</Link>
+          <h3 className="text-xs font-mono uppercase tracking-widest text-[#C58A38]">Core Research Coverage</h3>
+          <Link href="/category/intel-dossiers" className="text-xs font-mono text-zinc-400 hover:text-[#C58A38] transition-colors">View All →</Link>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
           
           {/* Card 1 */}
-          <div className="bg-[#121216] border border-white/5 rounded-xl p-6 hover:border-[#D4AF37]/20 transition-all flex flex-col justify-between space-y-4">
+          <div className="bg-[#121216] border border-white/5 rounded-xl p-6 hover:border-[#C58A38]/20 transition-all flex flex-col justify-between space-y-4">
             <div>
               <div className="flex items-center gap-2 text-xs font-mono text-zinc-400 mb-3">
-                <span className="text-[#D4AF37]">MARKET-SIGNALS</span>
+                <span className="text-[#C58A38]">MARKET-SIGNALS</span>
                 <span>•</span>
                 <span>8 MIN READ</span>
               </div>
-              <h4 className="text-lg sm:text-xl font-bold font-serif text-zinc-100 mb-3 hover:text-[#D4AF37] transition-colors">
+              <h4 className="text-lg sm:text-xl font-bold font-serif text-zinc-100 mb-3 hover:text-[#C58A38] transition-colors">
                 Real Yields & Treasury Spreads: Decoding the Next Bond Market Shock
               </h4>
               <p className="text-xs sm:text-sm text-zinc-400 leading-relaxed">
@@ -110,19 +110,19 @@ export default function HomePage() {
             </div>
             <div className="pt-4 border-t border-white/5 flex items-center justify-between text-xs font-mono">
               <span className="text-zinc-500">Signal: Defensive</span>
-              <Link href="/category/market-signals" className="text-[#D4AF37] hover:underline">Access Signal</Link>
+              <Link href="/category/market-signals" className="text-[#C58A38] hover:underline">Access Signal</Link>
             </div>
           </div>
 
           {/* Card 2 */}
-          <div className="bg-[#121216] border border-white/5 rounded-xl p-6 hover:border-[#D4AF37]/20 transition-all flex flex-col justify-between space-y-4">
+          <div className="bg-[#121216] border border-white/5 rounded-xl p-6 hover:border-[#C58A38]/20 transition-all flex flex-col justify-between space-y-4">
             <div>
               <div className="flex items-center gap-2 text-xs font-mono text-zinc-400 mb-3">
-                <span className="text-[#D4AF37]">TECH-ARSENAL</span>
+                <span className="text-[#C58A38]">TECH-ARSENAL</span>
                 <span>•</span>
                 <span>10 MIN READ</span>
               </div>
-              <h4 className="text-lg sm:text-xl font-bold font-serif text-zinc-100 mb-3 hover:text-[#D4AF37] transition-colors">
+              <h4 className="text-lg sm:text-xl font-bold font-serif text-zinc-100 mb-3 hover:text-[#C58A38] transition-colors">
                 Algorithmic Execution Frameworks for High-Velocity Macro Hedges
               </h4>
               <p className="text-xs sm:text-sm text-zinc-400 leading-relaxed">
@@ -131,7 +131,7 @@ export default function HomePage() {
             </div>
             <div className="pt-4 border-t border-white/5 flex items-center justify-between text-xs font-mono">
               <span className="text-zinc-500">Signal: Neutral / Accumulate</span>
-              <Link href="/category/tech-arsenal" className="text-[#D4AF37] hover:underline">Explore Arsenal</Link>
+              <Link href="/category/tech-arsenal" className="text-[#C58A38] hover:underline">Explore Arsenal</Link>
             </div>
           </div>
 
@@ -142,10 +142,10 @@ export default function HomePage() {
       <section className="max-w-7xl mx-auto px-4 sm:px-8 pb-12 sm:pb-16">
         <div className="mb-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
           <div>
-            <h3 className="text-xs font-mono uppercase tracking-widest text-[#D4AF37]">Terminal Telemetry & Live Signals</h3>
+            <h3 className="text-xs font-mono uppercase tracking-widest text-[#C58A38]">Terminal Telemetry & Live Signals</h3>
             <p className="text-xs text-zinc-500 mt-1">Algorithmic outlook previews. Full execution signals locked to Terminal subscribers.</p>
           </div>
-          <a href="https://www.chronoversecapital.com/p/the-terminal.html" target="_blank" rel="noopener noreferrer" className="self-start sm:self-auto text-xs font-mono bg-[#D4AF37]/10 text-[#D4AF37] border border-[#D4AF37]/30 px-3 py-1.5 rounded hover:bg-[#D4AF37]/20 transition-all whitespace-nowrap">
+          <a href="https://www.chronoversecapital.com/p/the-terminal.html" target="_blank" rel="noopener noreferrer" className="self-start sm:self-auto text-xs font-mono bg-[#C58A38]/10 text-[#C58A38] border border-[#C58A38]/30 px-3 py-1.5 rounded hover:bg-[#C58A38]/20 transition-all whitespace-nowrap">
             Unlock Full Terminal →
           </a>
         </div>
@@ -161,13 +161,13 @@ export default function HomePage() {
               </div>
               
               <div className="w-full h-36 bg-[#0A0A0C] rounded border border-white/5 flex items-center justify-center mb-4 relative overflow-hidden">
-                <div className="absolute inset-0 opacity-20 bg-[radial-gradient(#D4AF37_1px,transparent_1px)] [background-size:16px_16px]"></div>
+                <div className="absolute inset-0 opacity-20 bg-[radial-gradient(#C58A38_1px,transparent_1px)] [background-size:16px_16px]"></div>
                 <div className="text-xs font-mono text-zinc-500">Live API Chart Telemetry Stream...</div>
               </div>
             </div>
 
-            <div className="bg-[#D4AF37]/5 border border-[#D4AF37]/10 rounded p-3 text-xs text-zinc-300">
-              <strong className="text-[#D4AF37] font-mono">Predictive Outlook:</strong> Expect downward pressure on yields over the next 14-21 sessions. Recommended positioning: Scale into duration assets.
+            <div className="bg-[#C58A38]/5 border border-[#C58A38]/10 rounded p-3 text-xs text-zinc-300">
+              <strong className="text-[#C58A38] font-mono">Predictive Outlook:</strong> Expect downward pressure on yields over the next 14-21 sessions. Recommended positioning: Scale into duration assets.
             </div>
           </div>
 
@@ -176,17 +176,17 @@ export default function HomePage() {
             <div>
               <div className="flex justify-between items-center mb-4 flex-wrap gap-2">
                 <span className="text-xs font-mono text-zinc-300">Global Central Bank Balance Sheet Net Flow</span>
-                <span className="text-[10px] sm:text-xs font-mono text-[#D4AF37] bg-[#D4AF37]/10 px-2 py-0.5 rounded">ACCUMULATION PHASE</span>
+                <span className="text-[10px] sm:text-xs font-mono text-[#C58A38] bg-[#C58A38]/10 px-2 py-0.5 rounded">ACCUMULATION PHASE</span>
               </div>
               
               <div className="w-full h-36 bg-[#0A0A0C] rounded border border-white/5 flex items-center justify-center mb-4 relative overflow-hidden">
-                <div className="absolute inset-0 opacity-20 bg-[radial-gradient(#D4AF37_1px,transparent_1px)] [background-size:16px_16px]"></div>
+                <div className="absolute inset-0 opacity-20 bg-[radial-gradient(#C58A38_1px,transparent_1px)] [background-size:16px_16px]"></div>
                 <div className="text-xs font-mono text-zinc-500">Live API Chart Telemetry Stream...</div>
               </div>
             </div>
 
-            <div className="bg-[#D4AF37]/5 border border-[#D4AF37]/10 rounded p-3 text-xs text-zinc-300">
-              <strong className="text-[#D4AF37] font-mono">Predictive Outlook:</strong> Liquidity expansion accelerating in Eastern corridors. Upside continuation expected for hard assets.
+            <div className="bg-[#C58A38]/5 border border-[#C58A38]/10 rounded p-3 text-xs text-zinc-300">
+              <strong className="text-[#C58A38] font-mono">Predictive Outlook:</strong> Liquidity expansion accelerating in Eastern corridors. Upside continuation expected for hard assets.
             </div>
           </div>
 
