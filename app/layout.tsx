@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { Geist } from 'next/font/google';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import Header from '@/components/Header';
+import Footer from '@/components/Footer';
 import './globals.css';
 
 const geistSans = Geist({
@@ -21,15 +22,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="dark">
-      <body className={`${geistSans.variable} antialiased bg-background text-foreground min-h-screen flex flex-col`}>
-        {/* Institutional Header */}
+      <body className={`${geistSans.variable} antialiased bg-[#0A0A0C] text-zinc-100 min-h-screen flex flex-col`}>
         <Header />
         
-        {/* Main Content Area */}
         <main className="flex-1">
           {children}
         </main>
 
+        <Footer />
         <SpeedInsights />
       </body>
     </html>
