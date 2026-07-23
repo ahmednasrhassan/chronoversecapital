@@ -6,11 +6,34 @@ import { useState } from 'react';
 export default function Header() {
   const [email, setEmail] = useState('');
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
 
-  const handleSubscribe = (e: React.FormEvent) => {
+  const handleSubscribe = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (email) {
-      window.location.href = `https://intel.chronoversecapital.com?email=${encodeURIComponent(email)}`;
+    if (!email) return;
+
+    setStatus('loading');
+
+    try {
+      const response = await fetch('/api/subscribe', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email }),
+      });
+
+      if (response.ok) {
+        setStatus('success');
+        setEmail(''); // Clear the input field
+        // Reset button status after 3 seconds
+        setTimeout(() => setStatus('idle'), 3000);
+      } else {
+        setStatus('error');
+        setTimeout(() => setStatus('idle'), 3000);
+      }
+    } catch (error) {
+      console.error('Subscription error:', error);
+      setStatus('error');
+      setTimeout(() => setStatus('idle'), 3000);
     }
   };
 
@@ -37,14 +60,16 @@ export default function Header() {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               placeholder="Institutional email..."
-              className="hidden md:block bg-[#1C1C22] text-zinc-200 text-xs px-3 py-1 rounded border border-white/10 focus:outline-none focus:border-amber-500/50 w-56 placeholder:text-zinc-600 transition-all"
+              disabled={status === 'loading' || status === 'success'}
+              className="hidden md:block bg-[#1C1C22] text-zinc-200 text-xs px-3 py-1 rounded border border-white/10 focus:outline-none focus:border-amber-500/50 w-56 placeholder:text-zinc-600 transition-all disabled:opacity-50"
               required
             />
             <button
               type="submit"
-              className="bg-amber-500/10 hover:bg-amber-500/20 text-amber-400 hover:text-amber-300 border border-amber-500/30 text-[11px] sm:text-xs px-2.5 py-1 rounded font-medium tracking-wide transition-all uppercase whitespace-nowrap"
+              disabled={status === 'loading' || status === 'success'}
+              className="bg-amber-500/10 hover:bg-amber-500/20 text-amber-400 hover:text-amber-300 border border-amber-500/30 text-[11px] sm:text-xs px-2.5 py-1 rounded font-medium tracking-wide transition-all uppercase whitespace-nowrap disabled:opacity-50 min-w-[140px]"
             >
-              Access Intelligence
+              {status === 'loading' ? 'Processing...' : status === 'success' ? 'Authorized ✅' : status === 'error' ? 'Error. Retry' : 'Access Intelligence'}
             </button>
           </form>
         </div>
