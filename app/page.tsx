@@ -1,14 +1,28 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 
 export default function HomePage() {
   return (
-    <div className="w-full bg-[#0A0A0C] text-zinc-100 font-sans min-h-screen overflow-x-hidden">
+    <div className="w-full bg-[#0A0A0C] text-zinc-100 font-sans min-h-screen overflow-x-hidden relative">
       
-      {/* 1️⃣ HERO SECTION */}
-      <section className="w-full px-4 sm:px-8 py-16 sm:py-20 border-b border-white/5">
-        <div className="max-w-4xl mx-auto text-center space-y-6 sm:space-y-8">
+      {/* 1. HERO SECTION */}
+      <section className="w-full px-4 sm:px-8 py-16 sm:py-20 border-b border-white/5 relative overflow-hidden">
+        
+        {/* Priority Hero Background Image - Loads Immediately */}
+        <div className="absolute inset-0 pointer-events-none flex justify-center opacity-[0.03]">
+          <Image
+            src="/hero-bg.png"
+            alt="Systemic Risk Architecture"
+            width={1920}
+            height={1080}
+            priority
+            className="object-cover w-full h-full"
+          />
+        </div>
+
+        <div className="max-w-4xl mx-auto text-center space-y-6 sm:space-y-8 relative z-10">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#C58A38]/10 border border-[#C58A38]/25 text-[#C58A38] text-[11px] sm:text-xs font-mono tracking-wider uppercase">
             <span className="w-2 h-2 rounded-full bg-[#C58A38] animate-pulse"></span>
             Institutional Macroeconomic Intelligence
@@ -42,7 +56,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 2️⃣ MASTER FEATURED REPORT (Full Width) */}
+      {/* 2. MASTER FEATURED REPORT */}
       <section className="max-w-7xl mx-auto px-4 sm:px-8 py-12 sm:py-16">
         <div className="mb-6 flex items-center justify-between">
           <h3 className="text-xs font-mono uppercase tracking-widest text-[#C58A38]">Featured Flagship Dossier</h3>
@@ -52,7 +66,7 @@ export default function HomePage() {
         <div className="bg-[#121216] border border-[#C58A38]/20 rounded-xl p-5 sm:p-10 relative overflow-hidden group hover:border-[#C58A38]/40 transition-all">
           <div className="absolute top-0 right-0 w-64 h-64 bg-[#C58A38]/5 rounded-full blur-3xl pointer-events-none"></div>
           
-          <div className="flex flex-wrap items-center gap-2 sm:gap-3 text-xs font-mono text-zinc-400 mb-4">
+          <div className="flex flex-wrap items-center gap-2 sm:gap-3 text-xs font-mono text-zinc-400 mb-4 relative z-10">
             <span className="px-2.5 py-1 rounded bg-[#C58A38]/10 text-[#C58A38] border border-[#C58A38]/20 text-[10px] sm:text-xs">INTEL-DOSSIER #042</span>
             <span>•</span>
             <span>MACRO LIQUIDITY MODEL</span>
@@ -60,21 +74,21 @@ export default function HomePage() {
             <span>12 MIN READ</span>
           </div>
 
-          <h2 className="text-xl sm:text-4xl font-bold font-serif text-zinc-100 mb-4 group-hover:text-[#C58A38] transition-colors">
+          <h2 className="text-xl sm:text-4xl font-bold font-serif text-zinc-100 mb-4 group-hover:text-[#C58A38] transition-colors relative z-10">
             The Sovereign Debt Super-Cycle: Global Liquidity Shifts & Systemic Collapse Vectors
           </h2>
 
-          <p className="text-xs sm:text-base text-zinc-400 leading-relaxed mb-8 max-w-3xl">
+          <p className="text-xs sm:text-base text-zinc-400 leading-relaxed mb-8 max-w-3xl relative z-10">
             An exhaustive structural dissection of central bank balance sheets, collateral scarcity dynamics, and the impending monetary pivot affecting cross-asset allocations.
           </p>
 
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between pt-6 border-t border-white/5 gap-4">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between pt-6 border-t border-white/5 gap-4 relative z-10">
             <div className="flex items-center gap-2 text-xs font-mono text-zinc-300">
               <span className="w-2 h-2 rounded-full bg-emerald-500"></span>
               Outlook: High Volatility / Structural Bullion Shift
             </div>
             <Link
-              href="/category/intel-dossiers"
+              href="/category/intel-dossiers/sovereign-debt-super-cycle"
               className="text-xs font-mono uppercase tracking-widest text-[#C58A38] hover:text-[#d89a44] flex items-center gap-1.5 transition-colors"
             >
               <span>Read Full Dossier</span>
@@ -84,7 +98,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 3️⃣ RESEARCH DOSSIERS GRID */}
+      {/* 3. RESEARCH DOSSIERS GRID */}
       <section className="max-w-7xl mx-auto px-4 sm:px-8 pb-12 sm:pb-16">
         <div className="mb-6 flex items-center justify-between">
           <h3 className="text-xs font-mono uppercase tracking-widest text-[#C58A38]">Core Research Coverage</h3>
@@ -110,7 +124,7 @@ export default function HomePage() {
             </div>
             <div className="pt-4 border-t border-white/5 flex items-center justify-between text-xs font-mono">
               <span className="text-zinc-500">Signal: Defensive</span>
-              <Link href="/category/market-signals" className="text-[#C58A38] hover:underline">Access Signal</Link>
+              <Link href="/category/market-signals/real-yields-treasury-spreads" className="text-[#C58A38] hover:underline">Access Signal</Link>
             </div>
           </div>
 
@@ -131,14 +145,14 @@ export default function HomePage() {
             </div>
             <div className="pt-4 border-t border-white/5 flex items-center justify-between text-xs font-mono">
               <span className="text-zinc-500">Signal: Neutral / Accumulate</span>
-              <Link href="/category/tech-arsenal" className="text-[#C58A38] hover:underline">Explore Arsenal</Link>
+              <Link href="/category/tech-arsenal/algorithmic-execution-frameworks" className="text-[#C58A38] hover:underline">Explore Arsenal</Link>
             </div>
           </div>
 
         </div>
       </section>
 
-      {/* 4️⃣ LIVE MARKET CHARTS & PREDICTIVE OUTLOOK */}
+      {/* 4. LIVE MARKET CHARTS & PREDICTIVE OUTLOOK */}
       <section className="max-w-7xl mx-auto px-4 sm:px-8 pb-12 sm:pb-16">
         <div className="mb-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
           <div>
@@ -160,9 +174,20 @@ export default function HomePage() {
                 <span className="text-[10px] sm:text-xs font-mono text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded">BULLISH DIVERGENCE</span>
               </div>
               
-              <div className="w-full h-36 bg-[#0A0A0C] rounded border border-white/5 flex items-center justify-center mb-4 relative overflow-hidden">
-                <div className="absolute inset-0 opacity-20 bg-[radial-gradient(#C58A38_1px,transparent_1px)] [background-size:16px_16px]"></div>
-                <div className="text-xs font-mono text-zinc-500">Live API Chart Telemetry Stream...</div>
+              <div className="w-full h-40 bg-[#0A0A0C] rounded border border-white/5 flex items-center justify-center mb-4 relative overflow-hidden group">
+                {/* Lazy Loaded Chart Image */}
+                <Image
+                  src="/chart-1.png"
+                  alt="US 10Y Real Yield Chart"
+                  fill
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                  loading="lazy"
+                  className="object-cover opacity-40 group-hover:opacity-70 transition-opacity duration-500"
+                />
+                <div className="absolute inset-0 opacity-20 bg-[radial-gradient(#C58A38_1px,transparent_1px)] [background-size:16px_16px] pointer-events-none"></div>
+                <div className="text-xs font-mono text-zinc-400 relative z-10 bg-[#0A0A0C]/80 px-3 py-1.5 rounded border border-white/10 backdrop-blur-sm">
+                  Live API Chart Telemetry...
+                </div>
               </div>
             </div>
 
@@ -179,9 +204,20 @@ export default function HomePage() {
                 <span className="text-[10px] sm:text-xs font-mono text-[#C58A38] bg-[#C58A38]/10 px-2 py-0.5 rounded">ACCUMULATION PHASE</span>
               </div>
               
-              <div className="w-full h-36 bg-[#0A0A0C] rounded border border-white/5 flex items-center justify-center mb-4 relative overflow-hidden">
-                <div className="absolute inset-0 opacity-20 bg-[radial-gradient(#C58A38_1px,transparent_1px)] [background-size:16px_16px]"></div>
-                <div className="text-xs font-mono text-zinc-500">Live API Chart Telemetry Stream...</div>
+              <div className="w-full h-40 bg-[#0A0A0C] rounded border border-white/5 flex items-center justify-center mb-4 relative overflow-hidden group">
+                {/* Lazy Loaded Chart Image */}
+                <Image
+                  src="/chart-2.png"
+                  alt="Central Bank Net Flow Chart"
+                  fill
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                  loading="lazy"
+                  className="object-cover opacity-40 group-hover:opacity-70 transition-opacity duration-500"
+                />
+                <div className="absolute inset-0 opacity-20 bg-[radial-gradient(#C58A38_1px,transparent_1px)] [background-size:16px_16px] pointer-events-none"></div>
+                <div className="text-xs font-mono text-zinc-400 relative z-10 bg-[#0A0A0C]/80 px-3 py-1.5 rounded border border-white/10 backdrop-blur-sm">
+                  Live API Chart Telemetry...
+                </div>
               </div>
             </div>
 
@@ -193,7 +229,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 5️⃣ EXCLUSIVE INSTITUTIONAL SPONSORS BAR */}
+      {/* 5. EXCLUSIVE INSTITUTIONAL SPONSORS BAR */}
       <section className="w-full bg-[#121216]/50 border-t border-b border-white/5 py-10">
         <div className="max-w-7xl mx-auto px-4 sm:px-8 text-center">
           <p className="text-[11px] font-mono uppercase tracking-widest text-zinc-500 mb-6">
@@ -211,3 +247,4 @@ export default function HomePage() {
     </div>
   );
 }
+
