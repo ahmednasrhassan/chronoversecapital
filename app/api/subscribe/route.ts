@@ -16,15 +16,12 @@ export async function POST(request: Request) {
 
     // Validate email payload
     if (!email || !email.includes('@')) {
-      return NextResponse.json(
-        { error: 'Valid institutional email is required.' },
-        { status: 400 }
-      );
+      return NextResponse.json({ error: 'Valid institutional email is required.' }, { status: 400 });
     }
 
     // Construct Amazon SES Email Payload
     const command = new SendEmailCommand({
-      Source: 'newsletter@chronoversecapital.com', // Must be a verified domain/identity in Amazon SES
+      Source: 'newsletter@chronoversecapital.com',
       Destination: {
         ToAddresses: [email],
       },
@@ -73,20 +70,10 @@ export async function POST(request: Request) {
     // Send dispatch command to AWS SES
     await ses.send(command);
 
-    // Return success response to Header component
-    return NextResponse.json(
-      { message: 'Subscription authorized successfully.' },
-      { status: 200 }
-    );
+    return NextResponse.json({ message: 'Subscription authorized successfully.' }, { status: 200 });
 
   } catch (error) {
     console.error('Amazon SES Integration Error:', error);
-    
-    // Return error response to trigger retry UI state in Header component
-    return NextResponse.json(
-      { error: 'Failed to authorize subscription.' },
-      { status: 500 }
-    );
+    return NextResponse.json({ error: 'Failed to authorize subscription.' }, { status: 500 });
   }
 }
-
