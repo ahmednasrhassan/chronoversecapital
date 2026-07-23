@@ -166,21 +166,21 @@ export default function HomePage() {
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
           
-          {/* Live Chart 1: US 10Y Treasury Note Futures */}
+          {/* Live Chart 1: US 10Y Treasury Bond (Guaranteed Ticker) */}
           <div className="bg-[#121216] border border-white/5 rounded-xl p-6 relative flex flex-col justify-between space-y-4">
             <div>
               <div className="flex justify-between items-center mb-4 flex-wrap gap-2">
-                <span className="text-xs font-mono text-zinc-300">US 10Y Treasury Futures / Liquidity Index</span>
+                <span className="text-xs font-mono text-zinc-300">US 10Y Treasury Index / Liquidity Model</span>
                 <span className="text-[10px] sm:text-xs font-mono text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded">BULLISH DIVERGENCE</span>
               </div>
               
               <div className="w-full h-[240px] rounded border border-white/5 mb-4 relative overflow-hidden bg-[#0A0A0C]">
                 <iframe
-                  src="https://s.tradingview.com/widgetembed/?symbol=CBOT:ZN1!&interval=D&theme=dark&style=1&hidesidetoolbar=1&hide_top_toolbar=1"
+                  src="https://s.tradingview.com/widgetembed/?symbol=AMEX:IEF&interval=D&theme=dark&style=1&hidesidetoolbar=1&hide_top_toolbar=1"
                   width="100%"
                   height="100%"
                   className="border-0"
-                  title="US 10Y Treasury Futures Chart"
+                  title="US 10Y Treasury Bond Index"
                 />
               </div>
             </div>
@@ -190,7 +190,7 @@ export default function HomePage() {
             </div>
           </div>
 
-          {/* Live Chart 2: Gold (Iframe Native) */}
+          {/* Live Chart 2: Gold */}
           <div className="bg-[#121216] border border-white/5 rounded-xl p-6 relative flex flex-col justify-between space-y-4">
             <div>
               <div className="flex justify-between items-center mb-4 flex-wrap gap-2">
@@ -235,4 +235,3 @@ export default function HomePage() {
     </div>
   );
 }
-
