@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
-import { TradingViewChart } from '@/components/TradingViewChart';
+import { TradingViewChart } from '../components/TradingViewChart';
 
 export default function HomePage() {
   return (
@@ -226,4 +226,3 @@ export default function HomePage() {
     </div>
   );
 }
-
