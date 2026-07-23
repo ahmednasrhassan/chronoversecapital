@@ -5,6 +5,7 @@ import { useState } from 'react';
 
 export default function Header() {
   const [email, setEmail] = useState('');
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const handleSubscribe = (e: React.FormEvent) => {
     e.preventDefault();
@@ -16,10 +17,10 @@ export default function Header() {
   return (
     <header className="w-full sticky top-0 z-50 bg-[#0A0A0C]/90 backdrop-blur-md border-b border-amber-500/10">
       <div className="w-full bg-[#121216] border-b border-white/5 py-1.5 px-4 sm:px-8">
-        <div className="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center text-xs gap-2">
+        <div className="max-w-7xl mx-auto flex justify-between items-center text-xs gap-2">
           <div className="flex items-center gap-2 text-zinc-400 font-mono tracking-wider">
             <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
-            <span className="text-zinc-500">INTELLIGENCE HUB:</span>
+            <span className="text-zinc-500 hidden sm:inline">INTELLIGENCE HUB:</span>
             <a 
               href="https://intel.chronoversecapital.com" 
               target="_blank" 
@@ -30,18 +31,18 @@ export default function Header() {
             </a>
           </div>
 
-          <form onSubmit={handleSubscribe} className="flex items-center gap-1.5 w-full sm:w-auto">
+          <form onSubmit={handleSubscribe} className="flex items-center gap-1.5">
             <input
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              placeholder="Enter institutional email..."
-              className="bg-[#1C1C22] text-zinc-200 text-xs px-3 py-1 rounded border border-white/10 focus:outline-none focus:border-amber-500/50 w-full sm:w-64 placeholder:text-zinc-600 transition-all"
+              placeholder="Institutional email..."
+              className="hidden md:block bg-[#1C1C22] text-zinc-200 text-xs px-3 py-1 rounded border border-white/10 focus:outline-none focus:border-amber-500/50 w-56 placeholder:text-zinc-600 transition-all"
               required
             />
             <button
               type="submit"
-              className="bg-amber-500/10 hover:bg-amber-500/20 text-amber-400 hover:text-amber-300 border border-amber-500/30 text-xs px-3 py-1 rounded font-medium tracking-wide transition-all uppercase whitespace-nowrap"
+              className="bg-amber-500/10 hover:bg-amber-500/20 text-amber-400 hover:text-amber-300 border border-amber-500/30 text-[11px] sm:text-xs px-2.5 py-1 rounded font-medium tracking-wide transition-all uppercase whitespace-nowrap"
             >
               Access Intelligence
             </button>
@@ -99,8 +100,73 @@ export default function Header() {
             <span>TERMINAL</span>
             <span className="w-2 h-2 rounded-full bg-amber-500"></span>
           </Link>
+
+          <button
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            aria-label="Toggle Navigation Menu"
+            className="md:hidden p-2 text-zinc-400 hover:text-zinc-100 bg-white/5 hover:bg-white/10 rounded border border-white/10 transition-all focus:outline-none"
+          >
+            {isMobileMenuOpen ? (
+              <svg className="w-5 h-5 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            ) : (
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
+              </svg>
+            )}
+          </button>
         </div>
       </div>
+
+      {isMobileMenuOpen && (
+        <div className="md:hidden bg-[#0D0D11] border-b border-amber-500/20 px-6 py-6 space-y-4">
+          <nav className="flex flex-col space-y-3 font-medium text-sm text-zinc-300">
+            <Link 
+              href="/category/intel-dossiers" 
+              onClick={() => setIsMobileMenuOpen(false)}
+              className="hover:text-amber-400 py-1 border-b border-white/5 transition-colors"
+            >
+              Intel-Dossiers
+            </Link>
+
+            <Link 
+              href="/category/market-signals" 
+              onClick={() => setIsMobileMenuOpen(false)}
+              className="hover:text-amber-400 py-1 border-b border-white/5 transition-colors"
+            >
+              Market-Signals
+            </Link>
+
+            <Link 
+              href="/category/tech-arsenal" 
+              onClick={() => setIsMobileMenuOpen(false)}
+              className="hover:text-amber-400 py-1 border-b border-white/5 transition-colors"
+            >
+              Tech-Arsenal
+            </Link>
+
+            <Link 
+              href="/category/the-vault" 
+              onClick={() => setIsMobileMenuOpen(false)}
+              className="hover:text-amber-400 py-1 border-b border-white/5 transition-colors"
+            >
+              The-Vault
+            </Link>
+          </nav>
+
+          <div className="pt-2">
+            <Link
+              href="/category/the-vault"
+              onClick={() => setIsMobileMenuOpen(false)}
+              className="flex items-center justify-center gap-2 text-xs font-mono text-zinc-300 bg-amber-500/10 hover:bg-amber-500/20 border border-amber-500/30 w-full py-2.5 rounded transition-all"
+            >
+              <span>ACCESS TERMINAL</span>
+              <span className="w-2 h-2 rounded-full bg-amber-500"></span>
+            </Link>
+          </div>
+        </div>
+      )}
     </header>
   );
 }
