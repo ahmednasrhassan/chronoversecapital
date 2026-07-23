@@ -2,7 +2,6 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
-import { TradingViewChart } from '../components/TradingViewChart';
 
 export default function HomePage() {
   return (
@@ -167,7 +166,7 @@ export default function HomePage() {
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
           
-          {/* Live Chart 1: US 10Y Yield */}
+          {/* Live Chart 1: US 10Y Yield (Iframe Native) */}
           <div className="bg-[#121216] border border-white/5 rounded-xl p-6 relative flex flex-col justify-between space-y-4">
             <div>
               <div className="flex justify-between items-center mb-4 flex-wrap gap-2">
@@ -175,9 +174,14 @@ export default function HomePage() {
                 <span className="text-[10px] sm:text-xs font-mono text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded">BULLISH DIVERGENCE</span>
               </div>
               
-              {/* Dynamic TradingView API Injection */}
-              <div className="w-full rounded border border-white/5 mb-4 relative overflow-hidden bg-[#0A0A0C]">
-                <TradingViewChart symbol="TVC:US10Y" height={240} />
+              <div className="w-full h-[240px] rounded border border-white/5 mb-4 relative overflow-hidden bg-[#0A0A0C]">
+                <iframe
+                  src="https://s.tradingview.com/widgetembed/?symbol=TVC:US10Y&interval=D&theme=dark&style=1&hidesidetoolbar=1&hide_top_toolbar=1"
+                  width="100%"
+                  height="100%"
+                  className="border-0"
+                  title="US 10Y Yield Chart"
+                />
               </div>
             </div>
 
@@ -186,7 +190,7 @@ export default function HomePage() {
             </div>
           </div>
 
-          {/* Live Chart 2: Gold */}
+          {/* Live Chart 2: Gold (Iframe Native) */}
           <div className="bg-[#121216] border border-white/5 rounded-xl p-6 relative flex flex-col justify-between space-y-4">
             <div>
               <div className="flex justify-between items-center mb-4 flex-wrap gap-2">
@@ -194,9 +198,14 @@ export default function HomePage() {
                 <span className="text-[10px] sm:text-xs font-mono text-[#C58A38] bg-[#C58A38]/10 px-2 py-0.5 rounded">ACCUMULATION PHASE</span>
               </div>
               
-              {/* Dynamic TradingView API Injection */}
-              <div className="w-full rounded border border-white/5 mb-4 relative overflow-hidden bg-[#0A0A0C]">
-                <TradingViewChart symbol="TVC:GOLD" height={240} />
+              <div className="w-full h-[240px] rounded border border-white/5 mb-4 relative overflow-hidden bg-[#0A0A0C]">
+                <iframe
+                  src="https://s.tradingview.com/widgetembed/?symbol=TVC:GOLD&interval=D&theme=dark&style=1&hidesidetoolbar=1&hide_top_toolbar=1"
+                  width="100%"
+                  height="100%"
+                  className="border-0"
+                  title="Gold Hard Asset Chart"
+                />
               </div>
             </div>
 
