@@ -1,52 +1,140 @@
 import Link from 'next/link';
 
-export default function HomePage() {
+export default function Footer() {
   return (
-    <div className="w-full flex-1 flex flex-col items-center justify-center p-6 md:p-12 relative">
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-[#b36b39] opacity-[0.03] blur-[120px] pointer-events-none"></div>
-
-      <div className="w-full max-w-5xl space-y-16 z-10">
+    <footer className="w-full bg-[#0a0a0c] border-t border-neutral-800 text-neutral-300 py-12 px-4 md:px-8 mt-20 z-10 relative">
+      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-8">
         
-        <div className="text-center space-y-6">
-          <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight text-neutral-100 drop-shadow-sm">
-            Macroeconomic Intelligence
-          </h1>
-          <p className="text-lg md:text-xl text-neutral-400 max-w-3xl mx-auto leading-relaxed">
+        {/* Left Side: Name, Description, and Disclaimer */}
+        <div className="md:col-span-5 space-y-4">
+          <div className="flex items-center space-x-2">
+            <span className="text-xl font-bold tracking-wider text-[#b36b39] uppercase">
+              ChronoVerse Capital
+            </span>
+          </div>
+          <p className="text-sm text-neutral-300 leading-relaxed">
             Navigating global liquidity, institutional structures, and structural market shifts through rigorous economic research and data-driven frameworks.
           </p>
+          <div className="pt-3 text-xs text-neutral-400 border-t border-neutral-800 leading-relaxed">
+            <p className="font-bold text-amber-500/90 uppercase tracking-wider mb-1">Legal Disclaimer:</p>
+            The information and analysis provided on this platform are for educational and research purposes only and do not constitute investment or financial advice, nor a recommendation to initiate any financial transactions.
+          </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          <div className="group bg-black p-10 rounded-xl border border-[#2a1a12] shadow-2xl hover:border-[#b36b39] transition-all duration-500 ease-in-out">
-            <div className="mb-6">
-              <h3 className="text-2xl font-bold text-neutral-100 mb-3 tracking-wide">Intel Dossier</h3>
-              <div className="h-1 w-12 bg-[#b36b39] rounded-full transition-all duration-300 group-hover:w-24"></div>
-            </div>
-            <p className="text-neutral-400 mb-8 leading-relaxed text-sm md:text-base">
-              Explore our extensive pipeline of macroeconomic publications detailing structural shifts, historical margins, and the next global liquidity void.
-            </p>
-            <Link href="#" className="inline-flex items-center text-[#b36b39] font-bold uppercase tracking-wider text-sm hover:text-[#d48c5b] transition-colors">
-              Read Publication
-              <span className="ml-2 transform group-hover:translate-x-1 transition-transform">→</span>
-            </Link>
-          </div>
+        {/* Column 1: Blog Categories */}
+        <div className="md:col-span-2 space-y-3">
+          <h3 className="text-sm font-semibold text-neutral-100 uppercase tracking-wider">
+            Categories
+          </h3>
+          <ul className="space-y-2 text-sm text-neutral-400">
+            <li>
+              <Link href="/category/intel-dossiers" className="hover:text-[#b36b39] transition-colors">
+                Intel-Dossiers
+              </Link>
+            </li>
+            <li>
+              <Link href="/category/market-signals" className="hover:text-[#b36b39] transition-colors">
+                Market-Signals
+              </Link>
+            </li>
+            <li>
+              <Link href="/category/tech-arsenal" className="hover:text-[#b36b39] transition-colors">
+                Tech-Arsenal
+              </Link>
+            </li>
+            <li>
+              <Link href="/category/the-vault" className="hover:text-[#b36b39] transition-colors">
+                The-Vault
+              </Link>
+            </li>
+          </ul>
+        </div>
 
-          <div className="group bg-black p-10 rounded-xl border border-[#2a1a12] shadow-2xl hover:border-[#b36b39] transition-all duration-500 ease-in-out">
-            <div className="mb-6">
-              <h3 className="text-2xl font-bold text-neutral-100 mb-3 tracking-wide">The Terminal</h3>
-              <div className="h-1 w-12 bg-[#b36b39] rounded-full transition-all duration-300 group-hover:w-24"></div>
-            </div>
-            <p className="text-neutral-400 mb-8 leading-relaxed text-sm md:text-base">
-              Access real-time architectural frameworks, historical market simulations, and structural data engineered for institutional economists.
-            </p>
-            <Link href="#" className="inline-flex items-center text-[#b36b39] font-bold uppercase tracking-wider text-sm hover:text-[#d48c5b] transition-colors">
-              Access Simulation
-              <span className="ml-2 transform group-hover:translate-x-1 transition-transform">→</span>
-            </Link>
-          </div>
+        {/* Column 2: About Pages */}
+        <div className="md:col-span-2 space-y-3">
+          <h3 className="text-sm font-semibold text-neutral-100 uppercase tracking-wider">
+            About
+          </h3>
+          <ul className="space-y-2 text-sm text-neutral-400">
+            <li>
+              <Link href="https://www.chronoversecapital.com/p/about-us.html" className="hover:text-[#b36b39] transition-colors">
+                About Us
+              </Link>
+            </li>
+            <li>
+              <Link href="https://www.chronoversecapital.com/p/the-chrono-verse-capital-manifesto.html" className="hover:text-[#b36b39] transition-colors">
+                The Manifesto
+              </Link>
+            </li>
+            <li>
+              <Link href="https://www.chronoversecapital.com/p/the-terminal.html" className="hover:text-[#b36b39] transition-colors">
+                The Terminal
+              </Link>
+            </li>
+            <li>
+              <Link href="https://www.chronoversecapital.com/p/the-arsenal.html" className="hover:text-[#b36b39] transition-colors">
+                The Arsenal
+              </Link>
+            </li>
+            <li>
+              <Link href="https://www.chronoversecapital.com/p/intelligence-index.html" className="hover:text-[#b36b39] transition-colors">
+                Intelligence Index
+              </Link>
+            </li>
+            <li>
+              <Link href="https://www.chronoversecapital.com/p/editorial-policy.html" className="hover:text-[#b36b39] transition-colors">
+                Editorial Policy
+              </Link>
+            </li>
+          </ul>
+        </div>
+
+        {/* Column 3: Legal & Contact Pages */}
+        <div className="md:col-span-3 space-y-3">
+          <h3 className="text-sm font-semibold text-neutral-100 uppercase tracking-wider">
+            Terms & Contact
+          </h3>
+          <ul className="space-y-2 text-sm text-neutral-400">
+            <li>
+              <Link href="https://www.chronoversecapital.com/p/contact-us.html" className="hover:text-[#b36b39] transition-colors">
+                Contact Us
+              </Link>
+            </li>
+            <li>
+              <Link href="https://www.chronoversecapital.com/p/faq.html" className="hover:text-[#b36b39] transition-colors">
+                FAQ
+              </Link>
+            </li>
+            <li>
+              <Link href="https://www.chronoversecapital.com/p/terms-of-service.html" className="hover:text-[#b36b39] transition-colors">
+                Terms of Service
+              </Link>
+            </li>
+            <li>
+              <Link href="https://www.chronoversecapital.com/p/privacy-policy.html" className="hover:text-[#b36b39] transition-colors">
+                Privacy Policy
+              </Link>
+            </li>
+            <li>
+              <Link href="https://www.chronoversecapital.com/p/disclaimer.html" className="hover:text-[#b36b39] transition-colors">
+                Disclaimer
+              </Link>
+            </li>
+            <li>
+              <Link href="https://www.chronoversecapital.com/p/dmca.html" className="hover:text-[#b36b39] transition-colors">
+                DMCA
+              </Link>
+            </li>
+          </ul>
         </div>
 
       </div>
-    </div>
+
+      {/* Copyright Bar */}
+      <div className="max-w-7xl mx-auto border-t border-neutral-800 mt-8 pt-6 flex flex-col md:flex-row justify-between items-center text-xs text-neutral-300">
+        <p>&copy; {new Date().getFullYear()} ChronoVerse Capital. All rights reserved.</p>
+        <p className="mt-2 md:mt-0 uppercase tracking-wider text-neutral-400">Executive Financial & Economic Intelligence</p>
+      </div>
+    </footer>
   );
 }
