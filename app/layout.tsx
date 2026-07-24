@@ -4,7 +4,7 @@ import { SpeedInsights } from '@vercel/speed-insights/next';
 import Link from 'next/link';
 import './globals.css';
 import SiteHeader from '@/components/SiteHeader';
-
+import Footer from '@/components/footer';
 const geistSans = Geist({
   variable: '--font-geist-sans',
   subsets: ['latin']
@@ -30,29 +30,16 @@ export default function RootLayout({
         
         {/* Main Navigation and SES Subscription Bar */}
         <SiteHeader />
-
-        {/* Page Content */}
+{/* Page Content */}
         <main className="flex-1 flex flex-col relative overflow-hidden">
           {children}
         </main>
 
-        {/* Footer */}
-        <footer className="w-full bg-black py-10 px-8 border-t border-[#2a2a2a] flex flex-col items-center justify-center space-y-4 z-10">
-          <div className="text-neutral-500 text-sm tracking-wide">
-            &copy; {new Date().getFullYear()} ChronoVerse Capital. All rights reserved.
-          </div>
-          <div className="flex space-x-6">
-            <Link href="#" className="text-neutral-600 hover:text-[#b36b39] text-xs uppercase tracking-wider transition-colors">
-              Privacy Policy
-            </Link>
-            <Link href="#" className="text-neutral-600 hover:text-[#b36b39] text-xs uppercase tracking-wider transition-colors">
-              Terms of Service
-            </Link>
-          </div>
-        </footer>
+        <Footer />
 
         <SpeedInsights />
       </body>
     </html>
   );
 }
+ 
